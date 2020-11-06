@@ -1,12 +1,21 @@
-import { createRouter, createWebHistory } from 'vue-router'
-// import Home from './views/Home.vue'
-import Index from '../views/Index.vue'
+import * as Vue from 'vue' //通过 import *** as *** 语法实现组件重命名
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+import First from '../views/First.vue'
+
+
+Vue.use(VueRouter)
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'Home',
+  //   component: Home
+  // },
   {
     path: '/',
-    name: 'Index',
-    component: () => import('../views/Index.vue')
+    name: 'First',
+    component: First
   },
   {
     path: '/about',
@@ -18,9 +27,13 @@ const routes = [
   }
 ]
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 
 export default router
+
+
+
